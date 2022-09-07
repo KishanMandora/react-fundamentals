@@ -4,25 +4,11 @@
 import * as React from 'react'
 
 function UsernameForm({onSubmitUsername}) {
-  // 🐨 add a submit event handler here (`handleSubmit`).
-  // 💰 Make sure to accept the `event` as an argument and call
-  // `event.preventDefault()` to prevent the default behavior of form submit
-  // events (which refreshes the page).
-  // 📜 https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault
-  //
-  // 🐨 get the value from the username input (using whichever method
-  // you prefer from the options mentioned in the instructions)
-  // 💰 For example: event.target.elements[0].value
-  // 🐨 Call `onSubmitUsername` with the value of the input
-
-  // 🐨 add the onSubmit handler to the <form> below
-
-  // 🐨 make sure to associate the label to the input.
-  // to do so, set the value of 'htmlFor' prop of the label to the id of input
+  const inputRef = React.useRef()
 
   function submitHandler(e) {
     e.preventDefault()
-    console.log(e.target[0].value, 'is username')
+    console.log(inputRef.current.value, 'is username')
     // console.dir(e.target)
     console.log(e.target.elements.surname.value, 'is surname')
   }
@@ -31,7 +17,7 @@ function UsernameForm({onSubmitUsername}) {
     <form onSubmit={submitHandler}>
       <div>
         <label>Username:</label>
-        <input type="text" />
+        <input type="text" ref={inputRef} />
         <label htmlFor="surname">Surname:</label>
         <input name="surname" id="surname" type="text" />
       </div>
