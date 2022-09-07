@@ -7,14 +7,34 @@
   <script src="https://unpkg.com/react-dom@18.1.0/umd/react-dom.development.js"></script>
   <script src="https://unpkg.com/@babel/standalone@7.12.4/babel.js"></script>
   <script type="text/babel">
-    function Message({children}) {
-      return <div>{children}</div>
+    function Message({greeting, subject}) {
+      return (
+        <div>
+          {greeting}, {subject}
+        </div>
+      )
+    }
+
+    const PropTypes = {
+      string(props, propName, componentName) {
+        const type = typeof props[propName]
+        if (type !== 'string') {
+          throw new Error(
+            `the type of ${propName} in ${componentName} should be "string" but here it is ${type}`,
+          )
+        }
+      },
+    }
+
+    Message.propTypes = {
+      subject: PropTypes.string,
+      greeting: PropTypes.string,
     }
 
     const element = (
       <div className="container">
-        <Message> Hello Earth </Message>
-        <Message> Goodbye Earth </Message>
+        <Message greeting="Hello" subject="Earth"></Message>
+        <Message greeting="Goodbye" subject="Earth"></Message>
       </div>
     )
 
