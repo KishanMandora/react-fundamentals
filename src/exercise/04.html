@@ -7,14 +7,14 @@
   <script src="https://unpkg.com/react-dom@18.1.0/umd/react-dom.development.js"></script>
   <script src="https://unpkg.com/@babel/standalone@7.12.4/babel.js"></script>
   <script type="text/babel">
-    function message({children}) {
-      return <span>{children}</span>
+    function Message({children}) {
+      return <div>{children}</div>
     }
 
     const element = (
       <div className="container">
-        {React.createElement(message, {children: 'Hello Earth'})}
-        {React.createElement(message, {children: 'Goodbye Earth'})}
+        <Message> Hello Earth </Message>
+        <Message> Goodbye Earth </Message>
       </div>
     )
 
