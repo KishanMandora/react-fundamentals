@@ -10,7 +10,9 @@
   <script type="text/babel">
     const className = 'container'
     const children = 'Hello Earth'
-    const element = <div className={className}> {children} </div>
+    const style = {color: 'red'}
+    const props = {children, className, style}
+    const element = <div {...props}></div>
 
     ReactDOM.createRoot(document.getElementById('root')).render(element)
   </script>
