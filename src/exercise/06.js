@@ -52,7 +52,7 @@ function UsernameForm({onSubmitUsername}) {
             id="petname"
             type="text"
             value={petname}
-            onChange={e => setPetname(e.target.value)}
+            onChange={e => setPetname(e.target.value.toLowerCase())}
           />
           {checkLowerCase && (
             <span style={{color: 'red'}}>
