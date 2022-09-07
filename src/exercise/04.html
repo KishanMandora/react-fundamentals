@@ -6,6 +6,7 @@
   <script src="https://unpkg.com/react@18.1.0/umd/react.development.js"></script>
   <script src="https://unpkg.com/react-dom@18.1.0/umd/react-dom.development.js"></script>
   <script src="https://unpkg.com/@babel/standalone@7.12.4/babel.js"></script>
+  <script src="https://unpkg.com/prop-types@15.7.2/prop-types.js"></script>
   <script type="text/babel">
     function Message({greeting, subject}) {
       return (
@@ -15,27 +16,29 @@
       )
     }
 
-    const PropTypes = {
-      string(props, propName, componentName) {
-        const type = typeof props[propName]
-        if (type !== 'string') {
-          throw new Error(
-            `the type of ${propName} in ${componentName} should be "string" but here it is ${type}`,
-          )
-        }
-      },
-    }
+    // const PropTypes = {
+    //   string(props, propName, componentName) {
+    //     const type = typeof props[propName]
+    //     if (type !== 'string') {
+    //       throw new Error(
+    //         `the type of ${propName} in ${componentName} should be "string" but here it is ${type}`,
+    //       )
+    //     }
+    //   },
+    // }
 
     Message.propTypes = {
-      subject: PropTypes.string,
-      greeting: PropTypes.string,
+      subject: PropTypes.string.isRequired,
+      greeting: PropTypes.string.isRequired,
     }
 
+    // <Message subject="Example"></Message> // add in element to see how proptypes work
+
     const element = (
-      <div className="container">
+      <>
         <Message greeting="Hello" subject="Earth"></Message>
         <Message greeting="Goodbye" subject="Earth"></Message>
-      </div>
+      </>
     )
 
     ReactDOM.createRoot(document.getElementById('root')).render(element)
